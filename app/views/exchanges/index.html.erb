@@ -22,6 +22,8 @@
 <p><%= link_to ' Reset', root_path %></p>
 <% end %>
 <hr>
+<small>Author: <%= link_to 'BanditHijo.Com', 'https://bandithijo.com', target: "_blank" %> | October 2019</small>
 <% if Rails.env.development? %>
+  <hr>
   <%= debug(params) %>
 <% end %>
