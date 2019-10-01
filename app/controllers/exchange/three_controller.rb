@@ -4,7 +4,7 @@ class Exchange::ThreeController < ExchangesController
     require 'json'
 
     @base_url_name = "fixer.io"
-    @base_url = "http://data.fixer.io/api/latest?access_key=#{ENV["API_KEY"]}"
+    @base_url = "http://data.fixer.io/api/latest?access_key=#{ENV["FIXER_API_KEY"]}"
 
     @input = params[:input]
     @base = params[:base]
