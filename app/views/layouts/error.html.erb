@@ -1,0 +1,13 @@
+<h1 style="margin-block-end:0;">Hello, Exchange Rates API</h1>
+<p style="margin-block-start:0;margin-block-end:0;">Foreign exchange rates API with currency conversion.</p>
+<p style="margin-block-start:0;">From: <%= link_to 'exchangeratesapi.io', 'https://exchangeratesapi.io/' %></p>
+<hr>
+<p>
+----- ERROR ----- <button><%= link_to 'Try Again', root_path, style: "text-decoration:none;color:black;" %></button>
+</p>
+<hr>
+<small>Author: <%= link_to 'BanditHijo.Com', 'https://bandithijo.com', target: "_blank" %> | October 2019</small>
+<% if Rails.env.development? %>
+  <hr>
+  <%= debug(params) %>
+<% end %>
