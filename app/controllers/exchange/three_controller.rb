@@ -6,14 +6,14 @@ class Exchange::ThreeController < ExchangesController
     @base_url_name = "fixer.io"
     @base_url = "http://data.fixer.io/api/latest?access_key=#{ENV["FIXER_API_KEY"]}"
 
-    @input = params[:input]
-    @base = params[:base]
-    @rate_to = params[:rate_to]
-
-    url = "#{@base_url}&base=#{@base}"
-    uri = URI(url)
-
     begin
+      @input = params[:input]
+      @base = params[:base]
+      @rate_to = params[:rate_to]
+
+      url = "#{@base_url}&base=#{@base}"
+      uri = URI(url)
+
       response = Net::HTTP.get(uri)
       response_obj = JSON.parse(response)
       @rate = response_obj['rates']["#{@rate_to}"]

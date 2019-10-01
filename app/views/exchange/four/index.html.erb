@@ -1,25 +1,31 @@
 <%= render 'layouts/header' %>
+<h1 style="margin-block-end:0;">Open Exchange Rates API</h1>
+<p style="margin-block-start:0;margin-block-end:0;">Foreign exchange rates API with currency conversion.</p>
 <p style="margin-block-start:0;">From: <%= link_to "#{@base_url_name}", "#{@base_url}" %></p>
-<hr>
-<p style="margin-block-end:0;">The currency list (<%= @rates.collect.count %>) :</p>
-<small><%= @rates.collect { |key, value| [key] }.sort.join(" ") %></small>
 <hr>
 <%= form_tag('/exchange/four') do %>
   <table>
     <tr>
       <td><%= text_field_tag :input, 1, size: 2 %></td>
-      <td><%= select_tag :base, options_for_select(@rates.map { |a| a[0] }.sort, key="EUR") %></td>
+      <td><%= select_tag :base, options_for_select(@rates.map { |a| a[0] }.sort, key="USD") %></td>
       <td>to</td>
       <td><%= select_tag :rate_to, options_for_select(@rates.map { |a| a[0] }.sort, key="IDR") %></td>
-      <td><%= submit_tag 'Exchange' %></td>
+      <td><%= submit_tag 'Convert' %></td>
     </tr>
   </table>
 <% end %>
-<% unless @exchanges == 0 %>
+<% unless @exchanges.nil? %>
   <hr>
-  <p><%= "#{@input}" %> <%= "#{@base}" %> to <%= "#{@rate_to}" %> | <mark><strong><%= number_to_currency(@exchanges, unit: '', delimiter: '.', separator: ',') %></strong></mark></p>
+  <p><%= "#{@input}" %> <b><%= "#{@base}" %></b> to <b><%= "#{@rate_to}" %></b> | <mark><strong><%= number_to_currency(@exchanges, unit: '', delimiter: '.', separator: ',') %></strong></mark></p>
 <p><%= link_to ' Reset', exchange_four_index_path %></p>
 <% end %>
+<hr>
+<p>
+  <small><i><mark>* BASE only <b>USD</b></mark> | Changing the API `base` currency is available for Developer, Enterprise and Unlimited plan clients.</i></small>
+</p>
+<hr>
+<p style="margin-block-end:0;">The currency list (<%= @rates.collect.count %>) :</p>
+<small><%= @rates.collect { |key, value| [key] }.sort.join(" ") %></small>
 <hr>
 <small>Author: <%= link_to 'BanditHijo.Com', 'https://bandithijo.com', target: "_blank" %> | October 2019</small>
 <hr>

@@ -6,14 +6,14 @@ class Exchange::TwoController < ExchangesController
     @base_url_name = "ratesapi.io"
     @base_url = "https://api.ratesapi.io/api/latest?"
 
-    @input = params[:input]
-    @base = params[:base]
-    @rate_to = params[:rate_to]
-
-    url = "#{@base_url}&base=#{@base}"
-    uri = URI(url)
-
     begin
+      @input = params[:input]
+      @base = params[:base]
+      @rate_to = params[:rate_to]
+
+      url = "#{@base_url}&base=#{@base}"
+      uri = URI(url)
+
       response = Net::HTTP.get(uri)
       response_obj = JSON.parse(response)
       @rate = response_obj['rates']["#{@rate_to}"]
