@@ -1,10 +1,10 @@
-class Exchange::ThreeController < ExchangesController
+class Exchange::FourController < ExchangesController
   def index
     require 'net/http'
     require 'json'
 
-    @base_url_name = "fixer.io"
-    @base_url = "http://data.fixer.io/api/latest?access_key=#{ENV["FIXER_API_KEY"]}"
+    @base_url_name = "openexchangerates.org"
+    @base_url = "https://openexchangerates.org/api/latest.json?app_id=#{ENV["OPENEXCHANGE_API_KEY"]}"
 
     @input = params[:input]
     @base = params[:base]

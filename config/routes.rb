@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     post '/two', to: 'two#index'
     resources :three, only: [:index, :error]
     post '/three', to: 'three#index'
+    resources :four, only: [:index, :error]
+    post '/four', to: 'four#index'
   end
 
   get 'error', to: 'exchanges#error'
