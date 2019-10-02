@@ -14,7 +14,7 @@
     </tr>
   </table>
 <% end %>
-<% unless @exchanges == 0 %>
+<% unless @base.nil? and @rate_to.nil? %>
   <hr>
   <p><%= "#{@input}" %> <b><%= "#{@base}" %></b> to <b><%= "#{@rate_to}" %></b> | <mark><strong><%= number_to_currency(@exchanges, unit: '', delimiter: '.', separator: ',') %></strong></mark></p>
 <p><%= link_to ' Reset', exchange_one_index_path %></p>

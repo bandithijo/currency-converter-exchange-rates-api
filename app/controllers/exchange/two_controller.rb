@@ -18,7 +18,7 @@ class Exchange::TwoController < ExchangesController
       response_obj = JSON.parse(response)
       @rate = response_obj['rates']["#{@rate_to}"]
       @rates = response_obj['rates']
-      @exchanges = @input.to_i * @rate.to_i
+      @exchanges = @input.to_f * @rate.to_f
 
       unless @exchanges == 0
         render :index
