@@ -7,7 +7,7 @@
   <table>
     <tr>
       <td><%= text_field_tag :input, 1, size: 2 %></td>
-      <td><%= select_tag :base, options_for_select(@rates.map { |a| a[0] }.sort, key="EUR") %></td>
+      <td><%= select_tag :base, options_for_select(@rates.map { |a| a[0] }.sort, key="EUR"), disabled: true %></td>
       <td>to</td>
       <td><%= select_tag :rate_to, options_for_select(@rates.map { |a| a[0] }.sort, key="IDR") %></td>
       <td><%= submit_tag 'Convert' %></td>
