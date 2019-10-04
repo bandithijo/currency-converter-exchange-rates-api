@@ -4,17 +4,15 @@ class Exchange::FourController < ExchangesController
     require 'json'
 
     @base_url_name = "openexchangerates.org"
-    # @base_url = "https://openexchangerates.org/api/latest.json?app_id=#{ENV["OPENEXCHANGE_API_KEY"]}"
-    @base = "USD"
-    @rate_to = "IDR"
+    @base_url = "https://openexchangerates.org/api/latest.json?app_id=#{ENV["OPENEXCHANGE_API_KEY"]}"
 
     begin
       @input = params[:input]
-      @base = params[:base]
+      @base = "USD"
       @rate_to = params[:rate_to]
 
       # Build URI with your app ID and base currency:
-      uri = URI("https://openexchangerates.org/api/latest.json?app_id=#{ENV["OPENEXCHANGE_API_KEY"]}&base=#{@base}")
+      uri = URI("#{@base_url}&base=#{@base}")
 
       # Submit get request with your URI and parse results as JSON:
       response_obj = JSON.parse(Net::HTTP.get(uri))
@@ -36,7 +34,7 @@ class Exchange::FourController < ExchangesController
       base = "USD"
       uri = URI("https://openexchangerates.org/api/latest.json?app_id=#{ENV["OPENEXCHANGE_API_KEY"]}&base=#{base}")
       response_obj = JSON.parse(Net::HTTP.get(uri))
-      @rate = response_obj["rates"]["IDR"]
+      @rate = response_obj["rates"]["#{@rate_to}"]
       @rates = response_obj["rates"]
     end
   end

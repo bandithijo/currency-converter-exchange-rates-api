@@ -21,12 +21,12 @@
 <% end %>
 <hr>
 <p style="margin-block-end:0;">The currency list (<%= @rates.collect.count %>) :</p>
-<small><%= @rates.collect { |key, value| [key] }.sort.join(" ") %></small>
-<hr>
-<small>Author: <%= link_to 'BanditHijo.Com', 'https://bandithijo.com', target: "_blank" %> | October 2019</small>
+<%= render 'layouts/rates', rates: @rates %>
 <hr>
 <small>
 Rates API is a free service for current and historical foreign exchange rates built on top of data published by European Central Bank.
 Rates API is compatible with any application and programming languages.
 </small>
+<hr>
+<%= render 'layouts/footer' %>
 <%= render 'layouts/debuger' %>

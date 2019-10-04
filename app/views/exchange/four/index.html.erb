@@ -14,7 +14,7 @@
     </tr>
   </table>
 <% end %>
-<% unless @base.nil? and @rate_to.nil? %>
+<% unless @rate_to.nil? %>
   <hr>
   <p><%= "#{@input}" %> <b><%= "#{@base}" %></b> to <b><%= "#{@rate_to}" %></b> | <mark><strong><%= number_to_currency(@exchanges, unit: '', delimiter: '.', separator: ',') %></strong></mark></p>
 <p><%= link_to ' Reset', exchange_four_index_path %></p>
@@ -25,11 +25,11 @@
 </p>
 <hr>
 <p style="margin-block-end:0;">The currency list (<%= @rates.collect.count %>) :</p>
-<small><%= @rates.collect { |key, value| [key] }.sort.join(" ") %></small>
-<hr>
-<small>Author: <%= link_to 'BanditHijo.Com', 'https://bandithijo.com', target: "_blank" %> | October 2019</small>
+<%= render 'layouts/rates', rates: @rates %>
 <hr>
 <small>
 Open Exchange Rates provides a simple, lightweight and portable JSON API with live and historical foreign exchange (forex) rates for over 200 worldwide and digital currencies, via a simple and easy-to-integrate API, in JSON format. Data are tracked and blended algorithmically from multiple reliable sources, ensuring fair and unbiased consistency.
 </small>
+<hr>
+<%= render 'layouts/footer' %>
 <%= render 'layouts/debuger' %>

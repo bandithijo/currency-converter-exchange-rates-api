@@ -8,7 +8,7 @@ class Exchange::ThreeController < ExchangesController
 
     begin
       @input = params[:input]
-      @base = params[:base]
+      @base = "EUR"
       @rate_to = params[:rate_to]
 
       url = "#{@base_url}&base=#{@base}"
